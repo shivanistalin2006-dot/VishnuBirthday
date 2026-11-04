@@ -190,7 +190,7 @@ export const MemoryVault: React.FC = () => {
                   <div className="washi-tape bg-sky-200/80" />
                   <div className="w-full aspect-[3/4] rounded-xl overflow-hidden mb-3 bg-slate-100">
                     <img
-                      src="/assets/memories/memory_01.jpg"
+                      src={`${import.meta.env.BASE_URL}assets/memories/memory_01.jpg`}
                       alt="Special Memory 01"
                       className="w-full h-full object-cover"
                     />
@@ -210,7 +210,7 @@ export const MemoryVault: React.FC = () => {
                   <div className="washi-tape bg-blue-200/80" />
                   <div className="w-full aspect-[3/4] rounded-xl overflow-hidden mb-3 bg-slate-100">
                     <img
-                      src="/assets/memories/memory_02.jpg"
+                      src={`${import.meta.env.BASE_URL}assets/memories/memory_02.jpg`}
                       alt="Special Memory 02"
                       className="w-full h-full object-cover"
                     />

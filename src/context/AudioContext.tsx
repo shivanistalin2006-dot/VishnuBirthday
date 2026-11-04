@@ -17,7 +17,7 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const userPausedRef = useRef(false);
 
   useEffect(() => {
-    const audio = new Audio('/assets/music/background-music.mp3');
+    const audio = new Audio(`${import.meta.env.BASE_URL}assets/music/background-music.mp3`);
     audio.preload = 'auto';
     audio.loop = true;
     audio.volume = 0.22;

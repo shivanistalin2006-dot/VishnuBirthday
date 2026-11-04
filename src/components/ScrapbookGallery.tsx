@@ -6,7 +6,7 @@ import { ReasonItem } from '../types';
 const reasonsData: ReasonItem[] = [
   {
     id: 1,
-    filename: '/assets/individual/recent_01.jpg',
+    filename: `${import.meta.env.BASE_URL}assets/individual/recent_01.jpg`,
     title: 'My Biggest Supporter',
     tagline: 'Always in my corner',
     description: 'No matter what crazy idea or ambition I have, you are always the first one cheering for me with the loudest voice and proudest smile.',
@@ -15,7 +15,7 @@ const reasonsData: ReasonItem[] = [
   },
   {
     id: 2,
-    filename: '/assets/individual/recent_02.jpg',
+    filename: `${import.meta.env.BASE_URL}assets/individual/recent_02.jpg`,
     title: 'My Good Listener',
     tagline: 'Patient ears for all my stories',
     description: 'You listen to my endless stories, rants, and silly theories without ever checking the time or getting tired. You truly hear me.',
@@ -24,7 +24,7 @@ const reasonsData: ReasonItem[] = [
   },
   {
     id: 3,
-    filename: '/assets/individual/recent_03.jpg',
+    filename: `${import.meta.env.BASE_URL}assets/individual/recent_03.jpg`,
     title: 'My Personal Caretaker',
     tagline: 'Protective & genuine',
     description: 'From reminding me to take care of myself to checking in when things feel overwhelming, you genuinely care like family.',
@@ -33,7 +33,7 @@ const reasonsData: ReasonItem[] = [
   },
   {
     id: 4,
-    filename: '/assets/individual/recent_04.jpg',
+    filename: `${import.meta.env.BASE_URL}assets/individual/recent_04.jpg`,
     title: 'My Professional Irritator',
     tagline: 'Master of annoying me with love',
     description: 'Nobody has a PhD in annoying me and pushing my buttons quite like you do, yet life would be so boring without your teasing!',
@@ -42,7 +42,7 @@ const reasonsData: ReasonItem[] = [
   },
   {
     id: 5,
-    filename: '/assets/individual/recent_05.jpg',
+    filename: `${import.meta.env.BASE_URL}assets/individual/recent_05.jpg`,
     title: 'My Happiness Booster',
     tagline: 'Instant remedy for bad days',
     description: 'Even on days when nothing seems to go right, just one joke or stupid comment from you brings back my biggest, purest laugh.',
@@ -51,7 +51,7 @@ const reasonsData: ReasonItem[] = [
   },
   {
     id: 6,
-    filename: '/assets/individual/recent_06.jpg',
+    filename: `${import.meta.env.BASE_URL}assets/individual/recent_06.jpg`,
     title: 'My Non-Judgemental Person',
     tagline: 'Zero pretenses, 100% real',
     description: 'With you, I never have to filter my thoughts or pretend. You accept me exactly as the chaotic, emotional soul I am.',
@@ -60,7 +60,7 @@ const reasonsData: ReasonItem[] = [
   },
   {
     id: 7,
-    filename: '/assets/individual/recent_07.jpg',
+    filename: `${import.meta.env.BASE_URL}assets/individual/recent_07.jpg`,
     title: 'My Favourite Sloth',
     tagline: 'Chief executive of chilling',
     description: 'Watching you procrastinate and chill is an art form. My go-to buddy for doing absolutely nothing productive and loving every second.',
@@ -69,7 +69,7 @@ const reasonsData: ReasonItem[] = [
   },
   {
     id: 8,
-    filename: '/assets/individual/recent_08.jpg',
+    filename: `${import.meta.env.BASE_URL}assets/individual/recent_08.jpg`,
     title: 'My Little Ghost',
     tagline: 'Disappears & pops right back',
     description: 'Disappearing out of nowhere for hours or days, only to pop back into chat like nothing happened with a casual "dei"! Classic Vishnu.',
@@ -78,7 +78,7 @@ const reasonsData: ReasonItem[] = [
   },
   {
     id: 9,
-    filename: '/assets/individual/recent_09.jpg',
+    filename: `${import.meta.env.BASE_URL}assets/individual/recent_09.jpg`,
     title: 'My Backup Person',
     tagline: 'Always got my back',
     description: 'Whenever I find myself in a sticky situation or need someone to back me up, you are always just a single call away.',
@@ -87,7 +87,7 @@ const reasonsData: ReasonItem[] = [
   },
   {
     id: 10,
-    filename: '/assets/individual/recent_10.jpg',
+    filename: `${import.meta.env.BASE_URL}assets/individual/recent_10.jpg`,
     title: 'My First Best Male Friend',
     tagline: 'A rare and sacred bond',
     description: 'A friendship that changed so much for me. You proved that real, pure, drama-free brotherhood and genuine loyalty truly exist.',
@@ -96,7 +96,7 @@ const reasonsData: ReasonItem[] = [
   },
   {
     id: 11,
-    filename: '/assets/individual/recent_11.jpg',
+    filename: `${import.meta.env.BASE_URL}assets/individual/recent_11.jpg`,
     title: 'My Partner in Every Fight',
     tagline: 'Fighting, laughing, repeat',
     description: 'We argue over the dumbest topics, fight passionately, stop talking for 10 minutes, and then start laughing together again.',
@@ -105,7 +105,7 @@ const reasonsData: ReasonItem[] = [
   },
   {
     id: 12,
-    filename: '/assets/individual/recent_12.jpg',
+    filename: `${import.meta.env.BASE_URL}assets/individual/recent_12.jpg`,
     title: 'My Comfort Person',
     tagline: 'Safe haven of peace',
     description: 'The safe space where I do not have to explain why I am quiet or upset. Your presence alone calms the storm.',
@@ -114,7 +114,7 @@ const reasonsData: ReasonItem[] = [
   },
   {
     id: 13,
-    filename: '/assets/individual/recent_13.jpg',
+    filename: `${import.meta.env.BASE_URL}assets/individual/recent_13.jpg`,
     title: 'My Favourite Human Being',
     tagline: 'Above everyone else',
     description: 'Through all the years, all the phases, and all the chaos ? you remain my absolute favorite person in the entire world.',
