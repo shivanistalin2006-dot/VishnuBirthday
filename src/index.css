@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+}
+
+/* Custom Paper & Scrapbook effects */
+.font-handwriting {
+  font-family: 'Caveat', cursive, sans-serif;
+}
+
+.font-serif {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* Washi Tape Effect */
+.washi-tape {
+  background: rgba(186, 230, 253, 0.7);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  backdrop-filter: blur(2px);
+  position: absolute;
+  height: 24px;
+  width: 90px;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1.5deg);
+  z-index: 10;
+  border-left: 2px dashed rgba(255,255,255,0.6);
+  border-right: 2px dashed rgba(255,255,255,0.6);
+}
+
+.washi-tape-corner {
+  background: rgba(199, 210, 254, 0.75);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+  backdrop-filter: blur(2px);
+  position: absolute;
+  height: 20px;
+  width: 70px;
+  z-index: 10;
+}
+
+/* Subtle Paper Texture Effect */
+.paper-texture {
+  background-color: #ffffff;
+  background-image: radial-gradient(rgba(186, 230, 253, 0.25) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Polaroid Drop Shadow */
+.polaroid-shadow {
+  box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.12), 0 8px 10px -6px rgba(2, 132, 199, 0.08), 0 0 1px 1px rgba(0,0,0,0.04);
+}
+
+.polaroid-shadow-hover {
+  box-shadow: 0 20px 35px -5px rgba(2, 132, 199, 0.2), 0 10px 15px -5px rgba(2, 132, 199, 0.12);
+}
+
+/* Candle flame glow & flicker */
+@keyframes flameFlicker {
+  0%, 100% {
+    transform: scale(1) rotate(-1deg);
+    filter: drop-shadow(0 0 12px rgba(251, 191, 36, 0.9));
+  }
+  25% {
+    transform: scale(1.08, 0.96) rotate(1deg);
+    filter: drop-shadow(0 0 16px rgba(245, 158, 11, 0.95));
+  }
+  50% {
+    transform: scale(0.96, 1.05) rotate(-2deg);
+    filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.85));
+  }
+  75% {
+    transform: scale(1.04, 1.02) rotate(2deg);
+    filter: drop-shadow(0 0 18px rgba(251, 146, 60, 0.9));
+  }
+}
+
+.flame-animated {
+  animation: flameFlicker 1.4s ease-in-out infinite alternate;
+  transform-origin: bottom center;
+}
+
+/* Smoke puff animation */
+@keyframes smokePuff {
+  0% {
+    opacity: 0.8;
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(-25px) scale(1.4) translateX(6px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50px) scale(2) translateX(-10px);
+  }
+}
+
+.smoke-animated {
+  animation: smokePuff 2s ease-out forwards;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f0f9ff;
+}
+::-webkit-scrollbar-thumb {
+  background: #bae6fd;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7dd3fc;
+}
