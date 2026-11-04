@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FileCheck, Heart, Award, ArrowRight, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { FileCheck, Heart, Award, ArrowRight, ShieldCheck, AlertCircle } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 interface FriendshipContractProps {
@@ -10,30 +10,42 @@ interface FriendshipContractProps {
 export const FriendshipContract: React.FC<FriendshipContractProps> = ({ onProceedToFinal }) => {
   const [isSigned, setIsSigned] = useState(false);
   const [noPosition, setNoPosition] = useState<{ x: number; y: number } | null>(null);
+  const [noMessage, setNoMessage] = useState<string>('');
+  const [noEliminated, setNoEliminated] = useState<boolean>(false);
+  const [dodgeCount, setDodgeCount] = useState<number>(0);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
-  // Playful dodge logic for NO button
+  // Playful dodge logic when hovering or touching NO button
   const handleNoDodge = () => {
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
 
-    // Safe bounds within container (button size approx 100px x 45px)
-    const maxX = (rect.width / 2) - 60;
-    const maxY = 120;
+    // Safe bounds within container
+    const maxX = (rect.width / 2) - 65;
+    const maxY = 100;
 
-    // Pick random coordinates within bounds
     const randomX = (Math.random() * 2 - 1) * maxX;
     const randomY = (Math.random() * 2 - 1) * maxY;
 
     setNoPosition({ x: randomX, y: randomY });
+    setDodgeCount((prev) => prev + 1);
+
+    setNoMessage('Kill you shut!! 😾👊 No other go, click YES!! 😂💙');
+  };
+
+  // If he actually clicks/taps NO: remove NO button so there is NO OTHER GO except YES!
+  const handleNoClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setNoMessage('Kill you shut!! 😾👊 No other go, click YES!! 😂💙');
+    setNoEliminated(true);
   };
 
   const handleYes = () => {
     setIsSigned(true);
     // Grand celebration burst
     confetti({
-      particleCount: 80,
-      spread: 80,
+      particleCount: 90,
+      spread: 85,
       origin: { y: 0.6 },
       colors: ['#38BDF8', '#60A5FA', '#BAE6FD', '#F472B6', '#FBBF24'],
     });
@@ -73,38 +85,65 @@ export const FriendshipContract: React.FC<FriendshipContractProps> = ({ onProcee
               className="bg-white/90 backdrop-blur-md rounded-3xl p-8 sm:p-12 shadow-2xl border border-sky-100 text-center relative overflow-hidden"
             >
               {/* Question */}
-              <h3 className="font-serif text-2xl sm:text-3xl font-bold text-slate-800 mb-8 leading-snug">
+              <h3 className="font-serif text-2xl sm:text-3xl font-bold text-slate-800 mb-6 leading-snug">
                 Are you willing to sign the contract of being my friend for the rest of your life?
               </h3>
+
+              {/* Playful Warning Message when attempting NO */}
+              <AnimatePresence>
+                {noMessage && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10, scale: 0.9 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    className="mb-6 p-4 bg-rose-50 border-2 border-rose-200 rounded-2xl text-rose-600 font-bold text-sm sm:text-base flex items-center justify-center gap-2 shadow-md animate-pulse"
+                  >
+                    <AlertCircle className="w-5 h-5 shrink-0 text-rose-500" />
+                    <span>{noMessage}</span>
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
               {/* Interaction Playground */}
               <div
                 ref={containerRef}
                 className="relative min-h-[160px] flex items-center justify-center gap-6"
               >
-                {/* YES BUTTON (Fixed, always accessible) */}
+                {/* YES BUTTON (Fixed, pulses when NO is tried or eliminated) */}
                 <motion.button
-                  whileHover={{ scale: 1.08 }}
+                  whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
+                  animate={noMessage ? { scale: [1, 1.08, 1] } : { scale: 1 }}
+                  transition={{ repeat: noMessage ? Infinity : 0, duration: 1.2 }}
                   onClick={handleYes}
-                  className="px-8 py-3.5 rounded-full bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold text-lg shadow-lg shadow-sky-500/30 hover:shadow-sky-500/50 transition-all flex items-center gap-2 cursor-pointer z-10"
+                  className={`px-9 py-4 rounded-full bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold text-lg shadow-lg shadow-sky-500/30 hover:shadow-sky-500/50 transition-all flex items-center gap-2 cursor-pointer z-10 ${
+                    noEliminated ? 'scale-110 ring-4 ring-sky-300' : ''
+                  }`}
                 >
-                  <span>YES ?</span>
+                  <span>{noEliminated ? 'YES! (No Other Go! 💙)' : 'YES 💙'}</span>
                   <Heart className="w-5 h-5 fill-white" />
                 </motion.button>
 
-                {/* NO BUTTON (Dodge animation) */}
-                <motion.button
-                  animate={noPosition ? { x: noPosition.x, y: noPosition.y } : { x: 0, y: 0 }}
-                  transition={{ type: 'spring', stiffness: 350, damping: 20 }}
-                  onMouseEnter={handleNoDodge}
-                  onTouchStart={handleNoDodge}
-                  onClick={handleNoDodge}
-                  className="px-8 py-3.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-medium text-lg border border-slate-300 shadow-sm transition-colors cursor-pointer select-none"
-                >
-                  NO
-                </motion.button>
+                {/* NO BUTTON (Dodges on hover, and if clicked disappears completely so there is no other go) */}
+                {!noEliminated && (
+                  <motion.button
+                    animate={noPosition ? { x: noPosition.x, y: noPosition.y } : { x: 0, y: 0 }}
+                    transition={{ type: 'spring', stiffness: 350, damping: 20 }}
+                    onMouseEnter={handleNoDodge}
+                    onTouchStart={handleNoDodge}
+                    onClick={handleNoClick}
+                    className="px-8 py-3.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-medium text-lg border border-slate-300 shadow-sm transition-colors cursor-pointer select-none"
+                  >
+                    NO
+                  </motion.button>
+                )}
               </div>
+
+              {noMessage && (
+                <p className="text-xs sm:text-sm text-sky-600 font-bold mt-4">
+                  👉 Click YES! No other go! 😂💙
+                </p>
+              )}
             </motion.div>
           ) : (
             /* SIGNED LIFETIME FRIENDSHIP CERTIFICATE */
@@ -152,7 +191,7 @@ export const FriendshipContract: React.FC<FriendshipContractProps> = ({ onProcee
                   </p>
                 </div>
                 <p>
-                  has unconditionally agreed to be my best friend for the rest of his natural life. No refunds, no cancellations, and no escaping allowed! ??
+                  has unconditionally agreed to be my best friend for the rest of his natural life. No refunds, no cancellations, and no escaping allowed! 📜💙
                 </p>
               </div>
 
@@ -163,7 +202,7 @@ export const FriendshipContract: React.FC<FriendshipContractProps> = ({ onProcee
                   <p className="text-xs text-slate-400 uppercase tracking-wider font-semibold">Best Friend Signature</p>
                 </div>
                 <div>
-                  <p className="font-handwriting text-2xl text-sky-700 font-bold">Your Favourite Irritator</p>
+                  <p className="font-handwriting text-2xl text-sky-700 font-bold">Shivani</p>
                   <p className="text-xs text-slate-400 uppercase tracking-wider font-semibold">Best Friend Signature</p>
                 </div>
               </div>
@@ -175,7 +214,7 @@ export const FriendshipContract: React.FC<FriendshipContractProps> = ({ onProcee
                 onClick={onProceedToFinal}
                 className="px-8 py-3.5 rounded-full bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold shadow-lg shadow-sky-500/30 hover:shadow-sky-500/50 transition-all flex items-center justify-center gap-2 mx-auto cursor-pointer"
               >
-                <span>Read Final Words ?</span>
+                <span>Read Final Words 💌</span>
                 <ArrowRight className="w-5 h-5" />
               </motion.button>
             </motion.div>

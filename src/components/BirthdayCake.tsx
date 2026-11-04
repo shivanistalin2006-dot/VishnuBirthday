@@ -5,7 +5,7 @@ import confetti from 'canvas-confetti';
 
 export const BirthdayCake: React.FC = () => {
   const [status, setStatus] = useState<'idle' | 'counting' | 'ready_to_blow' | 'blown'>('idle');
-  const [timeLeft, setTimeLeft] = useState<number>(60);
+  const [timeLeft, setTimeLeft] = useState<number>(30);
   const timerRef = useRef<number | null>(null);
 
   // Timer countdown handling with cleanup
@@ -33,7 +33,7 @@ export const BirthdayCake: React.FC = () => {
 
   const handleStartWish = () => {
     if (status === 'idle') {
-      setTimeLeft(60);
+      setTimeLeft(30);
       setStatus('counting');
     }
   };
@@ -73,7 +73,7 @@ export const BirthdayCake: React.FC = () => {
   const handleReset = () => {
     if (timerRef.current) clearInterval(timerRef.current);
     setStatus('idle');
-    setTimeLeft(60);
+    setTimeLeft(30);
   };
 
   const isCandleLit = status !== 'blown';
@@ -100,7 +100,7 @@ export const BirthdayCake: React.FC = () => {
         </h2>
 
         <p className="font-handwriting text-2xl text-sky-700 mt-2">
-          "A special 60 seconds just to dream with your whole heart."
+          "A special 30 seconds just to dream with your whole heart."
         </p>
       </div>
 
@@ -192,9 +192,9 @@ export const BirthdayCake: React.FC = () => {
           {status === 'idle' && (
             <div className="space-y-4">
               <p className="text-slate-600 text-sm sm:text-base font-medium">
-                Click below to start your exact 60-second wish timer.
+                Click below to start your exact 30-second wish timer.
                 <br />
-                Take this full minute to think of your deepest wish!
+                Take these 30 seconds to think of your deepest wish!
               </p>
               <motion.button
                 whileHover={{ scale: 1.05 }}
@@ -208,7 +208,7 @@ export const BirthdayCake: React.FC = () => {
             </div>
           )}
 
-          {/* 2. COUNTING DOWN STATE (60 seconds) */}
+          {/* 2. COUNTING DOWN STATE (30 seconds) */}
           {status === 'counting' && (
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -233,7 +233,7 @@ export const BirthdayCake: React.FC = () => {
                     stroke="#0284C7"
                     strokeWidth="8"
                     strokeDasharray={2 * Math.PI * 46}
-                    strokeDashoffset={(2 * Math.PI * 46) * (1 - timeLeft / 60)}
+                    strokeDashoffset={(2 * Math.PI * 46) * (1 - timeLeft / 30)}
                     strokeLinecap="round"
                     fill="transparent"
                     className="transition-all duration-1000 ease-linear"
@@ -261,7 +261,7 @@ export const BirthdayCake: React.FC = () => {
             </motion.div>
           )}
 
-          {/* 3. READY TO BLOW (60 seconds completed) */}
+          {/* 3. READY TO BLOW (30 seconds completed) */}
           {status === 'ready_to_blow' && (
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
