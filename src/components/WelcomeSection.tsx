@@ -1,12 +1,21 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Sparkles, Heart, ChevronDown } from 'lucide-react';
+import { useAudio } from '../context/AudioContext';
 
 interface WelcomeSectionProps {
   onOpenSurprise: () => void;
 }
 
 export const WelcomeSection: React.FC<WelcomeSectionProps> = ({ onOpenSurprise }) => {
+  const { startMusicOnInteraction } = useAudio();
+
+  const handleOpenClick = () => {
+    // Start continuous background music on user's first interaction
+    startMusicOnInteraction();
+    onOpenSurprise();
+  };
+
   return (
     <section id="section-welcome" className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 py-16 overflow-hidden">
       {/* Dreamy Gradient Glow */}
@@ -69,7 +78,7 @@ export const WelcomeSection: React.FC<WelcomeSectionProps> = ({ onOpenSurprise }
         <motion.button
           whileHover={{ scale: 1.05, boxShadow: '0 20px 30px -10px rgba(2, 132, 199, 0.4)' }}
           whileTap={{ scale: 0.96 }}
-          onClick={onOpenSurprise}
+          onClick={handleOpenClick}
           className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-sky-500 via-blue-500 to-sky-600 text-white font-semibold text-lg shadow-lg shadow-sky-400/30 transition-all cursor-pointer border border-sky-300/40"
         >
           <span>Open Your Surprise ?</span>

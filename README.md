@@ -2,7 +2,7 @@
 
 A beautiful, emotional, and interactive digital birthday scrapbook crafted especially for **Vishnu Prasath** by his best friend & favourite irritator, **Shivani**.
 
-This website is designed as a dreamy, heartfelt digital gift with baby-blue aesthetics, Polaroid-style memories, handwritten love notes, an interactive memory vault, a 60-second wish ceremony, a lifetime friendship contract, and deep personal messages.
+This website is designed as a dreamy, heartfelt digital gift with baby-blue aesthetics, Polaroid-style memories, handwritten love notes, an interactive memory vault, a continuous peaceful background piano soundtrack, a 60-second wish ceremony, a lifetime friendship contract, and deep personal messages.
 
 ---
 
@@ -14,7 +14,7 @@ This website is designed as a dreamy, heartfelt digital gift with baby-blue aest
   - Notes & Emotional Letters: *Caveat* (Warm, realistic handwritten font)
   - Body & UI: *Plus Jakarta Sans* (Clean, modern sans-serif)
 - **Scrapbook Details**: Real Polaroid frames with subtle rotations, washi-tape decorations, paper textures, delicate drop shadows, glowing stars, and ambient sparkles.
-- **Audio Experience**: Dedicated Tamil dedication song player (*Alaakaa Loova*) with animated spinning vinyl record and equalizer waveform, plus a persistent mini-player so the music keeps playing throughout the entire journey.
+- **Continuous Soundtrack**: An original, peaceful, and nostalgic background instrumental track (*Soft Piano & Ambient Pads* in D Major) that loops seamlessly throughout the entire website at a gentle volume (~20%), with a small elegant floating toggle button to pause/play anytime.
 
 ---
 
@@ -24,14 +24,9 @@ This website is designed as a dreamy, heartfelt digital gift with baby-blue aest
    - Heading: `"HAPPY BIRTHDAY TO MY FAVORITE PERSON"`
    - Name: `"Vishnu Prasath"`
    - Subtitle: `"A little something made just for you."`
-   - Smooth button `"Open Your Surprise ?"` leading directly to the soundtrack.
+   - Smooth button `"Open Your Surprise ?"`: begins playback of the continuous peaceful background soundtrack and smoothly glides to the scrapbook memories.
    
-2. **Page 02 ? These Are For You ? (The Music Player)**
-   - Dedication Tamil song: `public/assets/music/birthday_song.mp3` (*Alaakaa Loova* by Sai Abhyankkar)
-   - Interactive vinyl player with play/pause, scrub bar, duration, volume control with mute, and pulsating equalizer bars.
-   - Quote: *"Some songs just remind me of you."*
-   
-3. **Page 03 ? 13 Reasons Why You're Special (Scrapbook Board)**
+2. **Page 02 ? 13 Reasons Why You're Special (Scrapbook Board)**
    - Features all 13 individual photographs (`recent_01.jpg` ? `recent_13.jpg`)
    - Exact numerical mappings:
      1. `recent_01` ? My Biggest Supporter
@@ -49,7 +44,7 @@ This website is designed as a dreamy, heartfelt digital gift with baby-blue aest
      13. `recent_13` ? My Favourite Human Being
    - Interactive zoom modal upon clicking any Polaroid.
 
-4. **Page 04 ? Little Secret: Memory Vault**
+3. **Page 03 ? Little Secret: Memory Vault**
    - Locked safe box diary interface.
    - Password: `INFINITE` (case-insensitive & trimmed).
    - Upon unlocking:
@@ -61,26 +56,26 @@ This website is designed as a dreamy, heartfelt digital gift with baby-blue aest
        > *You have been there for me whenever I needed someone the most.*
        > *I hope life gives you every, every happiness you deserve. May all your dreams come true sooner than you imagine."*
 
-5. **Page 05 ? A Beautiful Letter For You**
+4. **Page 04 ? A Beautiful Letter For You**
    - Interactive sealed baby-blue envelope with a wax heart seal.
    - Realistic multi-stage animation: flap opens, letter slides out, and unfolds.
    - Handwritten birthday letter with signature:
      > *"With lots of love,*
      > *Your favourite irritator. ????"*
 
-6. **Page 06 ? Make a Wish ??**
+5. **Page 05 ? Make a Wish ??**
    - Custom SVG birthday cake with a lit candle and glowing flickering flame.
    - Clicking `"MAKE A WISH ?"` starts an exact 60-second wish timer with circular visual progress.
    - Candle remains safely lit during the entire wish-making time.
    - When timer finishes, the `"BLOW ??"` button appears.
    - Clicking `"BLOW"` puts out the flame with a realistic smoke animation and triggers a confetti celebration!
 
-7. **Page 07 ? Friendship Contract**
+6. **Page 06 ? Friendship Contract**
    - Question: *"Are you willing to sign the contract of being my friend for the rest of your life?"*
    - Playful dodging `NO` button that smoothly jumps away within its container when hovered or tapped.
    - Fixed `YES ?` button that stamps and certifies the official Lifetime Friendship Agreement!
 
-8. **Page 08 ? Final Emotional Page**
+7. **Page 07 ? Final Emotional Page**
    - Heading: `"Thank You."`
    - 6 emotional friendship statements.
    - Climax quote:
@@ -93,7 +88,7 @@ This website is designed as a dreamy, heartfelt digital gift with baby-blue aest
 ## ?? Directory Structure
 
 ```text
-Vishnu-Birthday/
+VishnuBirthDay/
 ?
 ??? public/
 ?   ??? assets/
@@ -103,14 +98,14 @@ Vishnu-Birthday/
 ?       ?   ??? memory_01.jpg
 ?       ?   ??? memory_02.jpg
 ?       ??? music/
-?           ??? birthday_song.mp3
+?           ??? background-music.mp3
 ?
 ??? src/
 ?   ??? components/
-?   ?   ??? AudioPlayer.tsx
 ?   ?   ??? BirthdayCake.tsx
 ?   ?   ??? EnvelopeLetter.tsx
 ?   ?   ??? FinalEmotional.tsx
+?   ?   ??? FloatingMusicToggle.tsx
 ?   ?   ??? FloatingStars.tsx
 ?   ?   ??? FriendshipContract.tsx
 ?   ?   ??? MemoryVault.tsx
@@ -157,20 +152,3 @@ Vishnu-Birthday/
    ```bash
    npm run preview
    ```
-
----
-
-## ?? Deployment Instructions
-
-### Deploy to Vercel:
-1. Push this repository to GitHub.
-2. Go to [Vercel](https://vercel.com) and import the repository.
-3. Framework Preset: `Vite`
-4. Root Directory: `./`
-5. Click **Deploy**.
-
-### Deploy to Netlify:
-1. Connect repository in [Netlify](https://netlify.com).
-2. Build command: `npm run build`
-3. Publish directory: `dist`
-4. Click **Deploy Site**.

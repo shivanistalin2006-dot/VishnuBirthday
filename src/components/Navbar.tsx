@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Sparkles, Music, Image, Lock, Mail, Cake, FileText, Heart } from 'lucide-react';
+import { Sparkles, Image, Lock, Mail, Cake, FileText, Heart } from 'lucide-react';
 
 const sections = [
   { id: 'section-welcome', label: 'Welcome', icon: Sparkles },
-  { id: 'section-music', label: 'Music', icon: Music },
   { id: 'section-reasons', label: '13 Reasons', icon: Image },
   { id: 'section-vault', label: 'Secret Vault', icon: Lock },
   { id: 'section-letter', label: 'Letter', icon: Mail },
@@ -40,7 +38,7 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <header className="fixed top-4 left-1/2 -translate-x-1/2 z-40 max-w-fit px-3 py-2 rounded-full bg-white/75 backdrop-blur-md border border-sky-200/80 shadow-lg shadow-sky-500/5 hidden sm:flex items-center gap-1">
+    <header className="fixed top-4 left-1/2 -translate-x-1/2 z-40 max-w-fit px-3 py-2 rounded-full bg-white/80 backdrop-blur-md border border-sky-200/80 shadow-lg shadow-sky-500/5 hidden sm:flex items-center gap-1">
       {sections.map((sec) => {
         const Icon = sec.icon;
         const isActive = activeSection === sec.id;
